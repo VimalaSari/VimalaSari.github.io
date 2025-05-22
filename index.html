@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Wint Htet Htet Moe</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #9370db;
+            --accent-color: #ff7e5f;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .interest-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .projects {
+            background-color: #f1f1f1;
+        }
+        
+        .project-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .toggle-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: #e06b4a;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .project-image.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            color: white;
+            background: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Profile Photo" class="profile-img">
+            <h1>Ma Wint Htet Htet Moe</h1>
+            <p class="tagline">Nurse | Project PEDU Contributor | Sports Enthusiast</p>
+        </div>
+    </header>
+    
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Ma Wint Htet Htet Moe, a passionate nursing professional dedicated to providing compassionate care to patients.</p>
+                    <p>When I'm not working, I enjoy various sports activities that keep me active and energized. I believe in maintaining a healthy balance between professional responsibilities and personal interests.</p>
+                    <p>I'm also involved in Project PEDU, where I contribute my skills and knowledge to make a positive impact in our community.</p>
+                    
+                    <h3 style="margin-top: 1.5rem;">My Interests</h3>
+                    <div class="interests">
+                        <span class="interest-tag">Nursing</span>
+                        <span class="interest-tag">Healthcare</span>
+                        <span class="interest-tag">Sports</span>
+                        <span class="interest-tag">Community Projects</span>
+                        <span class="interest-tag">Education</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-container">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Project PEDU</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Project PEDU is an initiative focused on improving education and healthcare access in underserved communities. As a contributor, I work with a team of dedicated professionals to create sustainable solutions.</p>
+                        
+                        <div class="project-toggle">
+                            <button class="toggle-btn" id="projectToggle">Show Project Image</button>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project PEDU" class="project-image" id="projectImage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ma Wint Htet Htet Moe. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">F</a>
+                <a href="#" class="social-link">In</a>
+                <a href="#" class="social-link">Tw</a>
+                <a href="#" class="social-link">Li</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for project image toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('projectToggle');
+            const projectImage = document.getElementById('projectImage');
+            
+            let isImageVisible = false;
+            
+            toggleBtn.addEventListener('click', function() {
+                isImageVisible = !isImageVisible;
+                
+                if (isImageVisible) {
+                    projectImage.classList.add('active');
+                    toggleBtn.textContent = 'Hide Project Image';
+                } else {
+                    projectImage.classList.remove('active');
+                    toggleBtn.textContent = 'Show Project Image';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
